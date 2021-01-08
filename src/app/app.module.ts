@@ -35,10 +35,12 @@ import { EditSocieteComponent } from './Views/edit-societe/edit-societe.componen
 import { AddSocieteComponent } from './Views/add-societe/add-societe.component';
 import { IndexSocieteComponent } from './Views/index-societe/index-societe.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { RegisterComponent } from './Views/register/register.component';
 import { LoginComponent } from './Views/login/login.component';
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { ProfileComponent } from './Views/profile/profile.component';
+
 
 @NgModule({
   declarations: [
@@ -85,7 +87,7 @@ import { ProfileComponent } from './Views/profile/profile.component';
     UserModule,
     VoitureModule
   ],
-  providers: [HttpClientModule],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
