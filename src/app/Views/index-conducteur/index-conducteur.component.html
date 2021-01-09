@@ -37,22 +37,52 @@
             <thead class="thead-light">
               <tr>
                 <th class="text-center">#</th>
-                <th>Type</th>
+                <th >prenomNomConducteur</th>
+                <th >dateNaissance</th>
+                <th >numPermisConduite</th>
+                <th >dateLivraisonPermisConduite</th>
+                <th >dateFinValidite</th>
+                <th >adresse</th>
+                <th >Telephone</th>
+                <th >NumCIN</th>
+                <th >DateCin</th>
+                <th >mailConducteur</th>
+                <th >dateCreationConducteur</th>
                 <th class="td-actions text-right">Actions</th>
               </tr>
             </thead>
             <tfoot>
               <tr>
                 <th class="text-center">#</th>
-                <th >Type</th>
+                <th >prenomNomConducteur</th>
+                <th >dateNaissance</th>
+                <th >numPermisConduite</th>
+                <th >dateLivraisonPermisConduite</th>
+                <th >dateFinValidite</th>
+                <th >adresse</th>
+                <th >Telephone</th>
+                <th >NumCIN</th>
+                <th >DateCin</th>
+                <th >mailConducteur</th>
+                <th >dateCreationConducteur</th>
                 <th class="td-actions text-right">Actions</th>
               </tr>
             </tfoot>
             <tbody>
 
-              <tr>
-                <td class="text-center"></td>
-                <td ></td>
+              <tr  *ngFor="let conducteur of conducteurs; let i = index" [attr.data-index]="i">
+                <td class="text-center">{{ conducteur.codeConducteur}}</td>
+                <td >{{ conducteur.prenomNomConducteur}}</td>
+                <td >{{ conducteur.dateNaissance}}</td>
+                <td >{{ conducteur.numPermisConduite}}</td>
+                <td >{{ conducteur.dateLivraisonPermisConduite}}</td>
+                <td >{{ conducteur.dateFinValidite}}</td>
+                <td >{{ conducteur.adresse}}</td>
+                <td >{{ conducteur.tel}}</td>
+                <td >{{ conducteur.numCIN}}</td>
+                <td >{{ conducteur.dateCin}}</td>
+                <td >{{ conducteur.mailConducteur}}</td>
+                <td >{{ conducteur.dateCreationConducteur}}</td>
 
                  <td class="td-actions text-right">
 

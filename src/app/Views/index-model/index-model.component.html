@@ -37,22 +37,24 @@
             <thead class="thead-light">
               <tr>
                 <th class="text-center">#</th>
-                <th>Type</th>
+                <th>nom_model</th>
                 <th class="td-actions text-right">Actions</th>
               </tr>
             </thead>
             <tfoot>
               <tr>
                 <th class="text-center">#</th>
-                <th >Type</th>
+                <th >nom_model</th>
+                <th >nom_model</th>
                 <th class="td-actions text-right">Actions</th>
               </tr>
             </tfoot>
             <tbody>
 
-              <tr>
-                <td class="text-center"></td>
-                <td ></td>
+              <tr *ngFor="let model of models; let i = index" [attr.data-index]="i">
+                <td class="text-center">{{ model.codeModel}}</td>
+                <td >{{ model.nomModel}}</td>
+                <td >{{ model.idVoiture}}</td>
 
                  <td class="td-actions text-right">
 

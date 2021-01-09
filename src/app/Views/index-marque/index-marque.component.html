@@ -37,22 +37,25 @@
               <thead class="thead-light">
                 <tr>
                   <th class="text-center">#</th>
-                  <th>Type</th>
+                  <th>nomMarque</th>
+                  <th>Maison</th>
                   <th class="td-actions text-right">Actions</th>
                 </tr>
               </thead>
               <tfoot>
                 <tr>
                   <th class="text-center">#</th>
-                  <th >Type</th>
+                  <th>nomMarque</th>
+                  <th>Maison</th>
                   <th class="td-actions text-right">Actions</th>
                 </tr>
               </tfoot>
               <tbody>
 
-                <tr>
-                  <td class="text-center"></td>
-                  <td ></td>
+                <tr *ngFor="let marque of marques; let i = index" [attr.data-index]="i">
+                  <td class="text-center">{{ marque.codeMarque}}</td>
+                  <td >{{ marque.nomMarque}}</td>
+                  <td >{{ marque.codeMaison}}</td>
 
                    <td class="td-actions text-right">
 

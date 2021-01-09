@@ -37,22 +37,40 @@
             <thead class="thead-light">
               <tr>
                 <th class="text-center">#</th>
-                <th>Type</th>
+                <th>datemisecirculation</th>
+                <th>numcartegrise</th>
+                <th>kilometrage</th>
+                <th>matricule</th>
+                <th>model</th>
+                <th>marque</th>
+                <th>maison</th>
                 <th class="td-actions text-right">Actions</th>
               </tr>
             </thead>
             <tfoot>
               <tr>
                 <th class="text-center">#</th>
-                <th >Type</th>
+                <th>datemisecirculation</th>
+                <th>numcartegrise</th>
+                <th>kilometrage</th>
+                <th>matricule</th>
+                <th>model</th>
+                <th>marque</th>
+                <th>maison</th>
                 <th class="td-actions text-right">Actions</th>
               </tr>
             </tfoot>
             <tbody>
 
-              <tr>
-                <td class="text-center"></td>
-                <td ></td>
+              <tr *ngFor="let voiture of voitures; let i = index" [attr.data-index]="i">
+                <td class="text-center">{{ voiture.idVoiture}}</td>
+                <td>{{ voiture.datemisecirculation}}</td>
+                <td>{{ voiture.numcartegrise}}</td>
+                <td>{{ voiture.kilometrage}}</td>
+                <td>{{ voiture.matricule}}</td>
+                <td>{{ voiture.model}}</td>
+                <td>{{ voiture.marque}}</td>
+                <td>{{ voiture.maison}}</td>
 
                  <td class="td-actions text-right">
 
