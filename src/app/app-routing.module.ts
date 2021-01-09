@@ -78,6 +78,7 @@ const routes: Routes = [
   { path: 'voiture/ajouter', component: HeaderComponent, children: [{ path: '', component: AddVoitureComponent }, ] },
    // Modifier Root
   { path: 'conducteur/modifier/{id}', component: HeaderComponent, children: [{ path: '', component: EditConducteurComponent }, ] },
+  { path: 'conducteur/delete/{id}', component: HeaderComponent, children: [{ path: '', component: IndexConducteurComponent }, ] },
   { path: 'contrat/modifier/{id}', component: HeaderComponent, children: [{ path: '', component: EditContratComponent }, ] },
   { path: 'maison/modifier/{id}', component: HeaderComponent, children: [{ path: '', component: EditMaisonComponent }, ] },
   { path: 'marque/modifier/{id}', component: HeaderComponent, children: [{ path: '', component: EditMarqueComponent }, ] },

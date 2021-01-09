@@ -22,7 +22,7 @@ export class EditMaisonComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
+    this.id = this.route.snapshot.params.id;
     this.isAddMode = !this.id;
     this.submitForm = this.formBuilder.group({
       nomMaison: ['', Validators.required],

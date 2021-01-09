@@ -9,9 +9,9 @@ import { ConducteurService } from 'src/app/Service/conducteur.service';
   styleUrls: ['./edit-conducteur.component.css']
 })
 export class EditConducteurComponent implements OnInit {
-  submitform!: FormGroup;
-  id!: string;
-  isAddMode!: boolean;
+  submitform: FormGroup;
+  id: string;
+  isAddMode: boolean;
   loading = false;
   submitted = false;
   constructor( private formBuilder: FormBuilder,
@@ -20,7 +20,7 @@ export class EditConducteurComponent implements OnInit {
                private conducteurService: ConducteurService) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
+    this.id = this.route.snapshot.params.id;
     this.isAddMode = !this.id;
     this.submitform = this.formBuilder.group({
       prenomNomConducteur:  ['', Validators.required],
