@@ -8,8 +8,8 @@
           <h6 class="h2 text-white d-inline-block mb-0">Contrat Management</h6>
           <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-              <li class="breadcrumb-item"><a href="Contrat/index"><i class="fas fa-home"></i></a></li>
-              <li class="breadcrumb-item"><a href="Contrat/index">Contrat</a></li>
+              <li class="breadcrumb-item"><a href="contrat"><i class="fas fa-home"></i></a></li>
+              <li class="breadcrumb-item"><a href="contrat">Contrat</a></li>
               <li class="breadcrumb-item active" aria-current="page">Index</li>
             </ol>
           </nav>
@@ -43,7 +43,7 @@
                 <th>prixUnitaireJour</th>
                 <th>prixTotal</th>
                 <th>montantAvance</th>
-                <th>dateCreationContrat</th>
+
                 <th>codeConducteur</th>
                 <th>conducteur</th>
                 <th>numSociete</th>
@@ -61,7 +61,7 @@
                 <th>prixUnitaireJour</th>
                 <th>prixTotal</th>
                 <th>montantAvance</th>
-                <th>dateCreationContrat</th>
+
                 <th>conducteur</th>
                 <th>numSociete</th>
                 <th>voiture</th>
@@ -78,18 +78,18 @@
                 <td>{{ contrat.prixUnitaireJour}}</td>
                 <td>{{ contrat.prixTotal}}</td>
                 <td>{{ contrat.montantAvance}}</td>
-                <td>{{ contrat.dateCreationContrat}}</td>
-                <td>{{ contrat.codeConducteur}}</td>
-                <td>{{ contrat.numSociete}}</td>
-                <td>{{ contrat.idVoiture}}</td>
+
+                <td>{{ contrat.conducteur['prenomNomConducteur']}}</td>
+                <td>{{ contrat.societe['nomSociete']}}</td>
+                <td>{{ contrat.voiture['numcartegrise']}}</td>
 
                  <td class="td-actions text-right">
 
-              <a href="" class="table-action" data-toggle="tooltip" data-original-title="Edit Contrat">
-                <i class="fas fa-user-edit"></i>
-              </a>
+                  <a routerLink="modifier/{{contrat.numContrat}}" class="table-action" data-toggle="tooltip" data-original-title="Edit Conducteur">
+                    <i class="fas fa-user-edit"></i>
+                  </a>
 
-             <a    href="" class="table-action table-action-delete"  data-toggle="tooltip" data-original-title="Delete Contrat">
+                 <a (click)="delete(contrat.numContrat)" class="table-action table-action-delete"  data-toggle="tooltip" data-original-title="Delete Conducteur">
 
                <i class="fas fa-trash"></i>
              </a>

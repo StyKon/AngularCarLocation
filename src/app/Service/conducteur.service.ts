@@ -29,7 +29,7 @@ export class ConducteurService {
   }
   // ADD Conducteur
   addConducteur(Conducteur: ConducteurModule): Observable<ConducteurModule>{
-     return this.http.post<ConducteurModule>(API_PATH + 'Conducteur/create', Conducteur);
+     return this.http.post<ConducteurModule>(API_PATH + 'Conducteur/create', Conducteur, {responseType: 'json'});
   }
   // Edite Conducteur
   editeConducteur(codeConducteur: any , Conducteur: any): Observable<ConducteurModule>{

@@ -25,5 +25,8 @@ export class IndexSocieteComponent implements OnInit {
           console.log(error);
         });
   }
-
+  delete(id: number) {
+    this.societeService.deleteSociete(id);
+    this.getAllSociete();
+   }
 }

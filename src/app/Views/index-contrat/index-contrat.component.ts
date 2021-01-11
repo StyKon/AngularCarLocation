@@ -25,5 +25,8 @@ export class IndexContratComponent implements OnInit {
           console.log(error);
         });
   }
-
+  delete(id: number) {
+    this.contratService.deleteContrat(id);
+    this.getAllContrat();
+   }
 }

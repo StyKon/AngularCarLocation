@@ -30,6 +30,7 @@ export class AddMaisonComponent implements OnInit {
       }, (err) => {
         console.log(err);
     });
+
   }
 
 }

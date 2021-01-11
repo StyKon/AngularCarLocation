@@ -11,5 +11,4 @@ import { CommonModule } from '@angular/common';
 export class ModelModule {
   codeModel: number;
   nomModel: string;
-  idVoiture: number;
 }

@@ -13,6 +13,7 @@ export class IndexConducteurComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllConducteur();
+
   }
   getAllConducteur(): void {
     this.conducteurService.getListConducteur()
@@ -26,5 +27,9 @@ export class IndexConducteurComponent implements OnInit {
         });
   }
 
+  delete(id: number) {
+    this.conducteurService.deleteConducteur(id);
+    this.getAllConducteur();
+  }
 
 }

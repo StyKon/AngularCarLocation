@@ -25,5 +25,8 @@ export class IndexMarqueComponent implements OnInit {
           console.log(error);
         });
   }
-
+  delete(id: number) {
+    this.marqueService.deleteMarque(id);
+    this.getAllMarque();
+   }
 }

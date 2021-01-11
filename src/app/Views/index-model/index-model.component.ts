@@ -25,5 +25,9 @@ export class IndexModelComponent implements OnInit {
           console.log(error);
         });
   }
+  delete(id: number) {
+    this.modelService.deleteModel(id);
+    this.getAllModel();
+  }
 
 }

@@ -25,5 +25,8 @@ export class IndexVoitureComponent implements OnInit {
           console.log(error);
         });
   }
-
+  delete(id: number) {
+    this.voitureService.deleteVoiture(id);
+    this.getAllVoiture();
+  }
 }
