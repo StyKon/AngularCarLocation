@@ -28,8 +28,10 @@ export class IndexConducteurComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.conducteurService.deleteConducteur(id);
-    this.getAllConducteur();
+    this.conducteurService.deleteConducteur(id).subscribe(res => {
+      this.getAllConducteur();
+    });
+
   }
 
 }

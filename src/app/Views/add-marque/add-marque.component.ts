@@ -43,7 +43,7 @@ export class AddMarqueComponent implements OnInit {
 
   getAllMaison(): void {
     this.maisonService.getListMaison()
-    .subscribe((data: any[])=>{
+    .subscribe((data: any[]) => {
       this.maisons = data;
     });
   }

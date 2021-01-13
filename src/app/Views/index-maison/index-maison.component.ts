@@ -27,7 +27,12 @@ export class IndexMaisonComponent implements OnInit {
         });
   }
   delete(id: number) {
-    this.maisonService.deleteMaison(id);
-    this.getAllMaison();
+    this.maisonService.deleteMaison(id).subscribe(
+      response => {
+        console.log(response);
+      },
+      error => {
+        console.log(error);
+      });
    }
 }

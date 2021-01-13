@@ -21,8 +21,8 @@ export class ContratModule {
   montantAvance: number;
   dateCreationContrat: Date;
 
-  conducteur: Conducteur[];
-  societe: Societe[];
-  voiture: Voiture[];
+  conducteurs: object;
+  societe: object;
+  voitures: object;
 
  }

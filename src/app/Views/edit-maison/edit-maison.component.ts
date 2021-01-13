@@ -10,13 +10,12 @@ import { MaisonService } from 'src/app/Service/maison.service';
   styleUrls: ['./edit-maison.component.css']
 })
 export class EditMaisonComponent implements OnInit {
+  maison: MaisonModule[];
+  submitForm: FormGroup;
 
-  submitForm!: FormGroup;
-  id!: string;
-  isAddMode!: boolean;
   loading = false;
   submitted = false;
-  maison!: MaisonModule[];
+
   constructor(private formBuilder: FormBuilder,
               private route: ActivatedRoute,
               private router: Router,
@@ -24,26 +23,25 @@ export class EditMaisonComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
-    this.isAddMode = !this.id;
+    this.maisonService.getMaisons(1).subscribe(
+      data => {
+        this.maison = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      });
     this.submitForm = this.formBuilder.group({
       nomMaison: ['', Validators.required],
     });
-    if (!this.isAddMode) {
-      // tslint:disable-next-line: radix
-      this.maisonService.getMaisons(this.route.snapshot.params['id']).subscribe(
-        data => {
-          this.maison = data;
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        });
-    }
+
+
+
+
   }
 
   onSubmit(): any {
-    this.maisonService.editeMaison(this.route.snapshot.params['id'], this.submitForm.value).subscribe(() => {
+    this.maisonService.editeMaison(this.route.snapshot.params.id, this.submitForm.value).subscribe(() => {
       console.log('Update Maison');
       this.router.navigate(['maison']);
     }).add(() => this.loading = false);

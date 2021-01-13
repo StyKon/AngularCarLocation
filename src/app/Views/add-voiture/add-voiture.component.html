@@ -78,27 +78,27 @@
                   <div class="form-row">
                     <div class="col-md-6 mb-3">
                       <label class="form-control-label">Choix Maison</label>
-                      <select class="form-control"  data-toggle="select" formControlName="maison">
+                      <select class="form-control"  data-toggle="select" name="maison" formControlName="maison">
                         <option *ngFor="let maison of maisons"
-                        [value]="maison">{{maison.nomMaison}}</option>
+                        [ngValue]="maison">{{maison.nomMaison}}</option>
                       </select>
                     </div>
                     </div>
                     <div class="form-row">
                       <div class="col-md-6 mb-3">
                         <label class="form-control-label">Choix Marque</label>
-                        <select class="form-control"  data-toggle="select" formControlName="marque">
+                        <select class="form-control"  data-toggle="select" name="marque" formControlName="marque">
                           <option *ngFor="let marque of marques"
-                          [value]="marque">{{marque.nomMarque}}</option>
+                          [ngValue]="marque">{{marque.nomMarque}}</option>
                         </select>
                       </div>
                       </div>
                       <div class="form-row">
                         <div class="col-md-6 mb-3">
                           <label class="form-control-label">Choix Model</label>
-                          <select class="form-control"  data-toggle="select" formControlName="model">
+                          <select class="form-control"  data-toggle="select" name="model" formControlName="model">
                             <option *ngFor="let model of models"
-                            [value]="model">{{model.nomModel}}</option>
+                            [ngValue]="model">{{model.nomModel}}</option>
                           </select>
                         </div>
                         </div>

@@ -12,5 +12,5 @@ import { MaisonModule as Maison } from '../maison/maison.module';
 export class MarqueModule{
   codeMarque: number;
   nomMarque: string;
-  maison: Maison[];
+  maison: object;
 }

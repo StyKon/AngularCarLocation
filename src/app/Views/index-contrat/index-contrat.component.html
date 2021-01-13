@@ -72,16 +72,16 @@
 
               <tr  *ngFor="let contrat of contrats; let i = index" [attr.data-index]="i">
                 <td class="text-center">{{ contrat.numContrat}}</td>
-                <td>{{ contrat.dateContrat}}</td>
-                <td>{{ contrat.dateDebutLocation}}</td>
-                <td>{{ contrat.dateFinLocation}}</td>
+                <td>{{ contrat.dateContrat | date: 'dd-MM-yyyy'}}</td>
+                <td>{{ contrat.dateDebutLocation | date: 'dd-MM-yyyy'}}</td>
+                <td>{{ contrat.dateFinLocation | date: 'dd-MM-yyyy'}}</td>
                 <td>{{ contrat.prixUnitaireJour}}</td>
                 <td>{{ contrat.prixTotal}}</td>
                 <td>{{ contrat.montantAvance}}</td>
 
-                <td>{{ contrat.conducteur['prenomNomConducteur']}}</td>
+                <td>{{ contrat.conducteurs['prenomNomConducteur']}}</td>
                 <td>{{ contrat.societe['nomSociete']}}</td>
-                <td>{{ contrat.voiture['numcartegrise']}}</td>
+                <td>{{ contrat.voitures['numcartegrise']}}</td>
 
                  <td class="td-actions text-right">
 

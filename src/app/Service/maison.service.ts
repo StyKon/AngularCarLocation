@@ -25,7 +25,7 @@ export class MaisonService {
   }
   // to get all Maison
   getMaisons(codeMaison: number): Observable<MaisonModule[]>{
-   return this.http.get<MaisonModule[]>(API_PATH + 'Maison/' + codeMaison , {responseType: 'json'});
+   return this.http.get<MaisonModule[]>(API_PATH + 'Maison/findMaisonBy' + codeMaison , {responseType: 'json'});
   }
   // ADD Maison
   addMaison(Maison: MaisonModule): Observable<MaisonModule>{
