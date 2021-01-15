@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConducteurModule } from 'src/app/Models/conducteur/conducteur.module';
 import { ConducteurService } from 'src/app/Service/conducteur.service';
+import { ConfirmationDialogService } from 'src/app/Views/confirmation-dialog/confirmation-dialog.service';
 
 @Component({
   selector: 'app-index-conducteur',
@@ -9,7 +10,7 @@ import { ConducteurService } from 'src/app/Service/conducteur.service';
 })
 export class IndexConducteurComponent implements OnInit {
   conducteurs: ConducteurModule[];
-  constructor(private conducteurService: ConducteurService) { }
+  constructor(private conducteurService: ConducteurService , private confirmationDialogService: ConfirmationDialogService) { }
 
   ngOnInit(): void {
     this.getAllConducteur();
@@ -27,11 +28,18 @@ export class IndexConducteurComponent implements OnInit {
         });
   }
 
-  delete(id: number) {
-    this.conducteurService.deleteConducteur(id).subscribe(res => {
-      this.getAllConducteur();
-    });
-
+  public openConfirmationDialog(id: number) {
+    this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to ... ?')
+    .then((confirmed) => {
+     if (confirmed === true){this.conducteurService.deleteConducteur(id).subscribe(
+      response => {
+        console.log(response);
+        this.getAllConducteur();
+      },
+      error => {
+        console.log(error);
+      }); }
+    }).catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
 
 }

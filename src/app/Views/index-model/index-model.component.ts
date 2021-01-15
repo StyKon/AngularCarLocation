@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModelModule } from 'src/app/Models/model/model.module';
 import { ModelService } from 'src/app/Service/model.service';
+import { ConfirmationDialogService } from 'src/app/Views/confirmation-dialog/confirmation-dialog.service';
 
 @Component({
   selector: 'app-index-model',
@@ -9,7 +10,7 @@ import { ModelService } from 'src/app/Service/model.service';
 })
 export class IndexModelComponent implements OnInit {
   models: ModelModule[];
-  constructor(private modelService: ModelService) { }
+  constructor(private modelService: ModelService , private confirmationDialogService: ConfirmationDialogService) { }
 
   ngOnInit(): void {
     this.getAllModel();
@@ -25,9 +26,18 @@ export class IndexModelComponent implements OnInit {
           console.log(error);
         });
   }
-  delete(id: number) {
-    this.modelService.deleteModel(id);
-    this.getAllModel();
+   public openConfirmationDialog(id: number) {
+    this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to ... ?')
+    .then((confirmed) => {
+     if (confirmed === true){this.modelService.deleteModel(id).subscribe(
+      response => {
+        console.log(response);
+        this.getAllModel();
+      },
+      error => {
+        console.log(error);
+      }); }
+    }).catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
 
 }

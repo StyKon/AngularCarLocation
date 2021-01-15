@@ -40,6 +40,7 @@ import { RegisterComponent } from './Views/register/register.component';
 import { LoginComponent } from './Views/login/login.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { ProfileComponent } from './Views/profile/profile.component';
+import { ConfirmationDialogComponent } from './Views/confirmation-dialog/confirmation-dialog.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { ProfileComponent } from './Views/profile/profile.component';
     IndexSocieteComponent,
     RegisterComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
