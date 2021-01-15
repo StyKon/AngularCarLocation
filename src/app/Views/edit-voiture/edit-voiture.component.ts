@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { VoitureModule } from 'src/app/Models/voiture/voiture.module';
 import { MaisonService } from 'src/app/Service/maison.service';
 import { MarqueService } from 'src/app/Service/marque.service';
 import { ModelService } from 'src/app/Service/model.service';
@@ -12,13 +13,11 @@ import { VoitureService } from 'src/app/Service/voiture.service';
   styleUrls: ['./edit-voiture.component.css']
 })
 export class EditVoitureComponent implements OnInit {
-
-  maisons!: any[];
-  marques!: any[];
-  models!: any[];
+  voiture: VoitureModule[];
+  maisons: any[];
+  marques: any[];
+  models: any[];
   submitForm!: FormGroup;
-  id!: string;
-  isAddMode!: boolean;
   loading = false;
   submitted = false;
   constructor(private voitureService: VoitureService, private modelService: ModelService,
@@ -29,25 +28,24 @@ export class EditVoitureComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
-    this.isAddMode = !this.id;
     this.submitForm = this.formBuilder.group({
+      idVoiture: this.route.snapshot.params.id,
       datemisecirculation : ['', Validators.required],
       numcartegrise : ['', Validators.required],
       kilometrage : ['', Validators.required],
       matricule : ['', Validators.required],
-      codeModel : ['', Validators.required],
-      codeMarque : ['', Validators.required],
-      codeMaison : ['', Validators.required],
+      model: ['', Validators.required],
+      marque: ['', Validators.required],
+      maison: ['', Validators.required],
     });
-    if (!this.isAddMode) {
-      // tslint:disable-next-line: radix
-      this.voitureService.getVoitures(parseInt(this.id)).subscribe(x => this.submitForm.patchValue(x));
-    }
+    this.getAllMaisons();
+    this.getAllMarques();
+    this.getAllModels();
+    this.getVoiture();
   }
 
   onSubmit(): any {
-    this.voitureService.editeVoiture(this.id, this.submitForm.value).subscribe(() => {
+    this.voitureService.editeVoiture(this.route.snapshot.params.id, this.submitForm.value).subscribe(() => {
       console.log('Conducteur Modifier');
       this.router.navigate(['voiture']);
     }).add(() => this.loading = false);
@@ -85,6 +83,15 @@ export class EditVoitureComponent implements OnInit {
         console.log(error);
       });
   }
-
+  getVoiture(): void {
+    this.voitureService.getVoitures(this.route.snapshot.params.id).subscribe(
+      data => {
+        this.voiture = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      });
+  }
 
 }

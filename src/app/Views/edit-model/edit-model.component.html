@@ -44,7 +44,7 @@
                   <div class="form-row">
                     <div class="col-md-6 mb-3">
                       <label class="form-control-label" >Name Model</label>
-                      <input type="text" class="form-control" formControlName="nom_model" name="nom_model"
+                      <input type="text" class="form-control" formControlName="nomModel" [ngModel]="model['nomModel']" name="nomModel"
                              placeholder="Nom Model"  required>
                       <div class="invalid-feedback">
                         Choisir a Name Model .

@@ -25,7 +25,7 @@ export class SocieteService {
   }
   // to get all Societe
   getSocietes(numSociete: number): Observable<SocieteModule[]>{
-   return this.http.get<SocieteModule[]>(API_PATH + 'Societe/' + numSociete , {responseType: 'json'});
+   return this.http.get<SocieteModule[]>(API_PATH + 'Societe/findSocieteBy/' + numSociete , {responseType: 'json'});
   }
   // ADD Societe
   addSociete(Societe: SocieteModule): Observable<SocieteModule>{
@@ -33,7 +33,7 @@ export class SocieteService {
   }
   // Edite Societe
   editeSociete(numSociete: any , Societe: any): Observable<SocieteModule>{
-   return this.http.put<SocieteModule>(API_PATH + 'Societe/findSocieteBy/' + numSociete , {responseType: 'json'});
+   return this.http.put<SocieteModule>(API_PATH + 'Societe/societe/' + numSociete , Societe , {responseType: 'json'});
   }
   // delete Societe
   deleteSociete(numSociete: number): Observable<SocieteModule>{

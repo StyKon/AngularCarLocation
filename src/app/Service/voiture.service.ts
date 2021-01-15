@@ -25,7 +25,7 @@ export class VoitureService {
   }
   // to get all Voiture
   getVoitures(idVoiture: number): Observable<VoitureModule[]>{
-   return this.http.get<VoitureModule[]>(API_PATH + 'Voiture/' + idVoiture , {responseType: 'json'});
+   return this.http.get<VoitureModule[]>(API_PATH + 'Voiture/findVoitureBy/' + idVoiture , {responseType: 'json'});
   }
   // ADD Voiture
   addVoiture(Voiture: VoitureModule): Observable<VoitureModule>{
@@ -33,7 +33,7 @@ export class VoitureService {
   }
   // Edite Voiture
   editeVoiture(idVoiture: any , Voiture: any): Observable<VoitureModule>{
-   return this.http.put<VoitureModule>(API_PATH + 'Voiture/findVoitureBy/' + idVoiture , {responseType: 'json'});
+   return this.http.put<VoitureModule>(API_PATH + 'Voiture/voiture/' + idVoiture , Voiture , {responseType: 'json'});
   }
   // delete Voiture
   deleteVoiture(idVoiture: number): Observable<VoitureModule>{

@@ -23,7 +23,14 @@ export class EditMaisonComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.maisonService.getMaisons(1).subscribe(
+    this.getMaison();
+    this.submitForm = this.formBuilder.group({
+      codeMaison: this.route.snapshot.params.id,
+      nomMaison: ['', Validators.required],
+    });
+  }
+  getMaison(): void {
+    this.maisonService.getMaisons(this.route.snapshot.params.id).subscribe(
       data => {
         this.maison = data;
         console.log(data);
@@ -31,18 +38,12 @@ export class EditMaisonComponent implements OnInit {
       error => {
         console.log(error);
       });
-    this.submitForm = this.formBuilder.group({
-      nomMaison: ['', Validators.required],
-    });
-
-
-
 
   }
-
   onSubmit(): any {
-    this.maisonService.editeMaison(this.route.snapshot.params.id, this.submitForm.value).subscribe(() => {
+    this.maisonService.editeMaison(this.route.snapshot.params.id, this.submitForm.value).subscribe((res) => {
       console.log('Update Maison');
+      console.log(res);
       this.router.navigate(['maison']);
     }).add(() => this.loading = false);
 

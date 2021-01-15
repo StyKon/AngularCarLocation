@@ -25,7 +25,7 @@ export class MarqueService {
   }
   // to get all Marque
   getMarques(codeMarque: number): Observable<MarqueModule[]>{
-   return this.http.get<MarqueModule[]>(API_PATH + 'Marque/' + codeMarque , {responseType: 'json'});
+   return this.http.get<MarqueModule[]>(API_PATH + 'Marque/findMarqueBy/' + codeMarque , {responseType: 'json'});
   }
   // ADD Marque
   addMarque(Marque: MarqueModule): Observable<MarqueModule>{
@@ -33,7 +33,7 @@ export class MarqueService {
   }
   // Edite Marque
   editeMarque(codeMarque: any , Marque: any): Observable<MarqueModule>{
-   return this.http.put<MarqueModule>(API_PATH + 'Marque/findMarqueBy/' + codeMarque , {responseType: 'json'});
+   return this.http.put<MarqueModule>(API_PATH + 'Marque/marque/' + codeMarque , Marque , {responseType: 'json'});
   }
   // delete Marque
   deleteMarque(codeMarque: number): Observable<MarqueModule>{

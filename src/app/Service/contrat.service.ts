@@ -25,7 +25,7 @@ export class ContratService {
   }
   // to get all Contrat
   getContrats(numContrat: number): Observable<ContratModule[]>{
-   return this.http.get<ContratModule[]>(API_PATH + 'Contrat/' + numContrat , {responseType: 'json'});
+   return this.http.get<ContratModule[]>(API_PATH + 'Contrat/findContratBy/' + numContrat , {responseType: 'json'});
   }
   // ADD Contrat
   addContrat(Contrat: ContratModule): Observable<ContratModule>{
@@ -33,7 +33,7 @@ export class ContratService {
   }
   // Edite Contrat
   editeContrat(numContrat: any , Contrat: any): Observable<ContratModule>{
-   return this.http.put<ContratModule>(API_PATH + 'Contrat/findContratBy/' + numContrat , {responseType: 'json'});
+   return this.http.put<ContratModule>(API_PATH + 'Contrat/Contrat/' + numContrat , Contrat , {responseType: 'json'});
   }
   // delete Contrat
   deleteContrat(numContrat: number): Observable<ContratModule>{

@@ -25,7 +25,7 @@ export class MaisonService {
   }
   // to get all Maison
   getMaisons(codeMaison: number): Observable<MaisonModule[]>{
-   return this.http.get<MaisonModule[]>(API_PATH + 'Maison/findMaisonBy' + codeMaison , {responseType: 'json'});
+   return this.http.get<MaisonModule[]>(API_PATH + 'Maison/findMaisonBy/' + codeMaison , {responseType: 'json'});
   }
   // ADD Maison
   addMaison(Maison: MaisonModule): Observable<MaisonModule>{
@@ -33,7 +33,7 @@ export class MaisonService {
   }
   // Edite Maison
   editeMaison(codeMaison: any , Maison: any): Observable<MaisonModule>{
-   return this.http.put<MaisonModule>(API_PATH + 'Maison/findMaisonBy/' + codeMaison , {responseType: 'json'});
+   return this.http.put<MaisonModule>(API_PATH + 'Maison/maison/' + codeMaison , Maison, {responseType: 'json'});
   }
   // delete Maison
   deleteMaison(codeMaison: number): Observable<MaisonModule>{

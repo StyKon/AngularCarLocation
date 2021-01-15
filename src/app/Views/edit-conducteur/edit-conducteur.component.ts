@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ConducteurModule } from 'src/app/Models/conducteur/conducteur.module';
 import { ConducteurService } from 'src/app/Service/conducteur.service';
 
 @Component({
@@ -9,9 +10,9 @@ import { ConducteurService } from 'src/app/Service/conducteur.service';
   styleUrls: ['./edit-conducteur.component.css']
 })
 export class EditConducteurComponent implements OnInit {
+  date: string;
+  conducteur: ConducteurModule[];
   submitform!: FormGroup;
-  id!: string;
-  isAddMode!: boolean;
   loading = false;
   submitted = false;
   constructor( private formBuilder: FormBuilder,
@@ -20,9 +21,9 @@ export class EditConducteurComponent implements OnInit {
                private conducteurService: ConducteurService) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
-    this.isAddMode = !this.id;
+    this.getConducteur();
     this.submitform = this.formBuilder.group({
+      codeConducteur: this.route.snapshot.params.id,
       prenomNomConducteur:  ['', Validators.required],
       dateNaissance: ['', Validators.required],
       numPermisConduite: ['', Validators.required],
@@ -33,16 +34,23 @@ export class EditConducteurComponent implements OnInit {
       numCIN: ['', Validators.required],
       dateCin: ['', Validators.required],
       mailConducteur: ['', Validators.required, Validators.email],
-      dateCreationConducteur: ['', Validators.required],
 
     });
-    if (!this.isAddMode) {
-      // tslint:disable-next-line: radix
-      this.conducteurService.getConducteurs(parseInt(this.id)).subscribe(x => this.submitform.patchValue(x));
-    }
+
+  }
+
+  getConducteur(): void {
+    this.conducteurService.getConducteurs(this.route.snapshot.params.id).subscribe(
+      data => {
+        this.conducteur = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      });
   }
   onSubmit(): void {
-    this.conducteurService.editeConducteur(this.id, this.submitform.value).subscribe(() => {
+    this.conducteurService.editeConducteur(this.route.snapshot.params.id, this.submitform.value).subscribe(() => {
       console.log('Conducteur Modifier');
       this.router.navigate(['conducteur']);
     }).add(() => this.loading = false);

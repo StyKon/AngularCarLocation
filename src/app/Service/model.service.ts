@@ -25,7 +25,7 @@ export class ModelService {
   }
   // to get all Model
   getModels(codeModel: number): Observable<ModelModule[]>{
-   return this.http.get<ModelModule[]>(API_PATH + 'Model/' + codeModel , {responseType: 'json'});
+   return this.http.get<ModelModule[]>(API_PATH + 'Model/findModelBy/' + codeModel , {responseType: 'json'});
   }
   // ADD Model
   addModel(Model: ModelModule): Observable<ModelModule>{
@@ -33,7 +33,7 @@ export class ModelService {
   }
   // Edite Model
   editeModel(codeModel: any , Model: any): Observable<ModelModule>{
-   return this.http.put<ModelModule>(API_PATH + 'Model/findModelBy/' + codeModel , {responseType: 'json'});
+   return this.http.put<ModelModule>(API_PATH + 'Model/model/' + codeModel , Model , {responseType: 'json'});
   }
   // delete Model
   deleteModel(codeModel: number): Observable<ModelModule>{

@@ -16,15 +16,13 @@ import { VoitureService } from 'src/app/Service/voiture.service';
   styleUrls: ['./edit-contrat.component.css']
 })
 export class EditContratComponent implements OnInit {
-  submitForm!: FormGroup;
-  id!: string;
-  isAddMode!: boolean;
-  loading = false;
-  submitted = false;
   conducteurs: ConducteurModule[];
   societes: SocieteModule[];
   voitures: VoitureModule[];
   contrat: ContratModule[];
+  submitForm!: FormGroup;
+  loading = false;
+  submitted = false;
   constructor( private formBuilder: FormBuilder,
                private route: ActivatedRoute,
                private router: Router,
@@ -34,35 +32,39 @@ export class EditContratComponent implements OnInit {
                private voitureService: VoitureService) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
-    this.isAddMode = !this.id;
     this.submitForm = this.formBuilder.group({
+      numContrat: this.route.snapshot.params.id,
       dateContrat: ['', Validators.required],
       dateDebutLocation: ['', Validators.required],
       dateFinLocation: ['', Validators.required],
       prixUnitaireJour: ['', Validators.required],
       prixTotal: ['', Validators.required],
       montantAvance: ['', Validators.required],
-      dateCreationContrat: ['', Validators.required],
       conducteurs: ['', Validators.required],
-      numSociete: ['', Validators.required],
+      societe: ['', Validators.required],
       voitures: ['', Validators.required]
     });
-    if (!this.isAddMode) {
-      // tslint:disable-next-line: radix
-      this.contratService.getContrats(parseInt(this.id)).subscribe(
-        data => {
-          this.contrat = data;
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        });
-    }
+    this.getContrat();
+    this.getAllConducteur();
+    this.getAllSocieters();
+    this.getAllVoitures();
+
   }
   onSubmit(): void {
-    this.contratService.editeContrat(this.id, this.submitForm.value);
-    this.router.navigate(['contrat']);
+    this.contratService.editeContrat(this.route.snapshot.params.id, this.submitForm.value).subscribe(() => {
+      console.log('Contrat Modifier');
+      this.router.navigate(['contrat']);
+    }).add(() => this.loading = false);
+  }
+  getContrat(): void {
+    this.contratService.getContrats(this.route.snapshot.params.id).subscribe(
+      data => {
+        this.contrat = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      });
   }
 
 
