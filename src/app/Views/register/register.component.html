@@ -24,13 +24,13 @@
         <div class="card bg-secondary border-0">
           <div class="card-header bg-transparent pb-5">
             <div class="text-muted text-center mt-2 mb-4"><small>Sign up with</small></div>
-        
+
              </div>
           <div class="card-body px-lg-5 py-lg-5">
             <div class="text-center text-muted mb-4">
               <small>Or sign up with credentials</small>
             </div>
-            <form role="form" 
+            <form role="form"
                   *ngIf="!isSuccessful"
                   name="form"
                   (ngSubmit)="f.form.valid && onSubmit()"
@@ -41,7 +41,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                   </div>
-                  <input class="form-control" type="text"
+                  <input class="form-control" type="text"  placeholder="Username"
                           name="username"
                           [(ngModel)]="form.username"
                           required
@@ -65,7 +65,7 @@
                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                   </div>
                   <input
-                  type="email"
+                  type="email"  placeholder="Email"
                   class="form-control"
                   name="email"
                   [(ngModel)]="form.email"
@@ -87,7 +87,7 @@
                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                   </div>
                   <input
-                  type="password"
+                  type="password"  placeholder="Password"
                   class="form-control"
                   name="password"
                   [(ngModel)]="form.password"
@@ -103,6 +103,31 @@
                 </div>
                 </div>
               </div>
+              <div class="form-group">
+                <div class="input-group input-group-merge input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                  </div>
+                  <select  placeholder="role"
+                  class="form-control"
+                  name="role"
+                  [(ngModel)]="form.role"
+                  required
+                  #role="ngModel"
+                >
+                <option   ngValue='["mod"]'>Moderateur</option>
+                <option   ngValue='["user"]'>User</option>
+                <option   ngValue='["admin"]'>Admin</option>
+                </select>
+                <div class="alert-danger" *ngIf="role.errors && f.submitted">
+                  <div *ngIf="role.errors.required">Password is required</div>
+                  <div *ngIf="role.errors.minlength">
+                    Password must be at least 6 characters
+                  </div>
+                </div>
+                </div>
+              </div>
+
                 <div class="row my-4">
                 <div class="col-12">
                   <div class="custom-control custom-control-alternative custom-checkbox">
@@ -116,7 +141,7 @@
               <div class="text-center">
                 <button type="submit" class="btn btn-primary mt-4">Create account</button>
               </div>
-              
+
             </form>
           </div>
         </div>
