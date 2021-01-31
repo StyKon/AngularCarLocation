@@ -25,68 +25,95 @@ import { IndexVoitureComponent } from './Views/index-voiture/index-voiture.compo
 import { LoginComponent } from './Views/login/login.component';
 import { ProfileComponent } from './Views/profile/profile.component';
 import { RegisterComponent } from './Views/register/register.component';
+import { AdminGuard } from './_helpers/admin.guard';
 
 const routes: Routes = [
   // Index Root
   {
-    path: 'conducteur', component: HeaderComponent,
-    children: [{ path: '', component: IndexConducteurComponent }, ],
+    path: 'conducteur', component: HeaderComponent, canActivate: [AdminGuard] ,
+    children: [{ path: '', component: IndexConducteurComponent } ],
   },
   {
-    path: 'contrat', component: HeaderComponent,
+    path: 'contrat', component: HeaderComponent, canActivate: [AdminGuard] ,
     children: [{ path: '', component: IndexContratComponent }, ]
   },
   {
-    path: 'maison', component: HeaderComponent,
+    path: 'maison', component: HeaderComponent, canActivate: [AdminGuard] ,
     children: [{ path: '', component: IndexMaisonComponent }, ]
   },
   {
-    path: 'marque', component: HeaderComponent,
+    path: 'marque', component: HeaderComponent, canActivate: [AdminGuard] ,
     children: [{ path: '', component: IndexMarqueComponent }, ]
   },
   {
-    path: 'model', component: HeaderComponent,
+    path: 'model', component: HeaderComponent, canActivate: [AdminGuard] ,
     children: [{ path: '', component: IndexModelComponent }, ]
   },
   {
-    path: 'societe', component: HeaderComponent,
+    path: 'societe', component: HeaderComponent, canActivate: [AdminGuard] ,
     children: [{ path: '', component: IndexSocieteComponent }, ]
   },
   {
-    path: 'voiture', component: HeaderComponent,
+    path: 'voiture', component: HeaderComponent, canActivate: [AdminGuard] ,
     children: [{ path: '', component: IndexVoitureComponent }, ]
   },
   // Ajouter Root
   {
-    path: 'conducteur/ajouter', component: HeaderComponent,
+    path: 'conducteur/ajouter', component: HeaderComponent, canActivate: [AdminGuard] ,
     children: [{ path: '', component: AddConducteurComponent }, ]
   },
   {
-    path: 'contrat/ajouter', component: HeaderComponent,
+    path: 'contrat/ajouter', component: HeaderComponent, canActivate: [AdminGuard] ,
     children: [{ path: '', component: AddContratComponent }, ]
   },
   {
-    path: 'maison/ajouter', component: HeaderComponent,
+    path: 'maison/ajouter', component: HeaderComponent, canActivate: [AdminGuard] ,
     children: [{ path: '', component: AddMaisonComponent }, ]
   },
   {
-    path: 'marque/ajouter', component: HeaderComponent,
+    path: 'marque/ajouter', component: HeaderComponent, canActivate: [AdminGuard] ,
     children: [{ path: '', component: AddMarqueComponent }, ]
   },
-  { path: 'model/ajouter', component: HeaderComponent, children: [{ path: '', component: AddModelComponent }, ] },
-  { path: 'societe/ajouter', component: HeaderComponent, children: [{ path: '', component: AddSocieteComponent }, ] },
-  { path: 'voiture/ajouter', component: HeaderComponent, children: [{ path: '', component: AddVoitureComponent }, ] },
+
+  { path: 'model/ajouter', component: HeaderComponent, canActivate: [AdminGuard] ,
+   children: [{ path: '', component: AddModelComponent }, ] },
+
+  { path: 'societe/ajouter', component: HeaderComponent, canActivate: [AdminGuard] ,
+   children: [{ path: '', component: AddSocieteComponent }, ] },
+
+  { path: 'voiture/ajouter', component: HeaderComponent , canActivate: [AdminGuard] ,
+   children: [{ path: '', component: AddVoitureComponent }, ] },
+
    // Modifier Root
-  { path: 'conducteur/modifier/:id', component: HeaderComponent, children: [{ path: '', component: EditConducteurComponent }, ] },
-  { path: 'conducteur/delete/:id', component: HeaderComponent, children: [{ path: '', component: IndexConducteurComponent }, ] },
-  { path: 'contrat/modifier/:id', component: HeaderComponent, children: [{ path: '', component: EditContratComponent }, ] },
-  { path: 'maison/modifier/:id', component: HeaderComponent, children: [{ path: '', component: EditMaisonComponent }, ] },
-  { path: 'marque/modifier/:id', component: HeaderComponent, children: [{ path: '', component: EditMarqueComponent }, ] },
-  { path: 'model/modifier/:id', component: HeaderComponent, children: [{ path: '', component: EditModelComponent }, ] },
-  { path: 'societe/modifier/:id', component: HeaderComponent, children: [{ path: '', component: EditSocieteComponent }, ] },
-  { path: 'voiture/modifier/:id', component: HeaderComponent, children: [{ path: '', component: EditVoitureComponent }, ] },
-  { path: 'profile', component: HeaderComponent, children: [{ path: '', component: ProfileComponent }, ] },
-  { path: '', component: HeaderComponent, children: [{ path: '', component: ProfileComponent }, ] },
+  { path: 'conducteur/modifier/:id', component: HeaderComponent, canActivate: [AdminGuard] ,
+   children: [{ path: '', component: EditConducteurComponent }, ] },
+
+  { path: 'conducteur/delete/:id', component: HeaderComponent, canActivate: [AdminGuard] ,
+  children: [{ path: '', component: IndexConducteurComponent }, ] },
+
+  { path: 'contrat/modifier/:id', component: HeaderComponent, canActivate: [AdminGuard] ,
+   children: [{ path: '', component: EditContratComponent }, ] },
+
+  { path: 'maison/modifier/:id', component: HeaderComponent, canActivate: [AdminGuard] ,
+   children: [{ path: '', component: EditMaisonComponent }, ] },
+
+  { path: 'marque/modifier/:id', component: HeaderComponent, canActivate: [AdminGuard] ,
+   children: [{ path: '', component: EditMarqueComponent }, ] },
+
+  { path: 'model/modifier/:id', component: HeaderComponent, canActivate: [AdminGuard] ,
+   children: [{ path: '', component: EditModelComponent }, ] },
+
+  { path: 'societe/modifier/:id', component: HeaderComponent, canActivate: [AdminGuard] ,
+   children: [{ path: '', component: EditSocieteComponent }, ] },
+
+  { path: 'voiture/modifier/:id', component: HeaderComponent, canActivate: [AdminGuard] ,
+   children: [{ path: '', component: EditVoitureComponent }, ] },
+
+  { path: 'profile', component: HeaderComponent, canActivate: [AdminGuard] ,
+   children: [{ path: '', component: ProfileComponent }, ] },
+
+  { path: '', component: HeaderComponent, canActivate: [AdminGuard] ,
+   children: [{ path: '', component: ProfileComponent }, ] },
 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

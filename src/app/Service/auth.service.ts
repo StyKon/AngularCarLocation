@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 const AUTH_API = 'http://localhost:8080/api/auth/';
-
+const TOKEN_KEY = 'auth-token';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
@@ -24,7 +24,13 @@ export class AuthService {
       password
     }, httpOptions);
   }
-
+  isLoggedIn(): boolean{
+    if (sessionStorage.getItem(TOKEN_KEY) !== null){
+      return true;
+    }else{
+      return false;
+    }
+  }
   register(username: string, email: string, password: string , role: any ): Observable<any> {
     return this.http.post(AUTH_API + 'signup', {
       username,

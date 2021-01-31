@@ -84,7 +84,7 @@
                   </div>
                   <div class="form-row">
                     <div class="col-md-6 mb-3">
-
+                      <label class="form-control-label"  >Choix Conducteur</label>
                       <select class="form-control" formControlName="conducteurs" name="conducteurs" data-toggle="select">
                        <option *ngFor="let conducteur of conducteurs"
                        [ngValue]="conducteur">{{conducteur.prenomNomConducteur}}</option>-->
@@ -92,6 +92,7 @@
                       </select>
                     </div>
                     <div class="col-md-6 mb-3">
+                      <label class="form-control-label"  >Choix Societe</label>
                       <select class="form-control" formControlName="societe" name="societe" data-toggle="select">
                         <option  *ngFor="let societe of societes"
                         [ngValue]="societe">{{societe.nomSociete}}</option>
@@ -100,6 +101,7 @@
                   </div>
                   <div class="form-row">
                   <div class="col-md-6 mb-3">
+                    <label class="form-control-label"  >Choix Voiture</label>
                     <select class="form-control"
                             formControlName="voitures" name="voitures" data-toggle="select">
                       <option *ngFor="let voiture of voitures"
