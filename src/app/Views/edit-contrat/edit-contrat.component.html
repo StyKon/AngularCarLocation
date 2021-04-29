@@ -1,0 +1,125 @@
+
+<!-- Main content -->
+
+    <!-- Header -->
+    <div class="header bg-primary pb-6"  >
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">Modifier Contrat</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="contrat"><i class="fas fa-home"></i></a></li>
+                  <li class="breadcrumb-item"><a href="contrat">Contrat</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Modifier</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="col-lg-6 col-5 text-right">
+            <a href="contrat" class="btn btn-sm btn-neutral">Retour</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+      <div class="row">
+        <div class="col">
+          <div class="card-wrapper">
+            <!-- Custom form validation -->
+            <div class="card">
+              <!-- Card header -->
+              <div class="card-header">
+                <h3 class="mb-0">Modifier Contrat</h3>
+              </div>
+              <!-- Card body -->
+              <div class="card-body">
+               <!--
+                 dateContrat
+                 dateDebutLocation
+                 dateFinLocation
+                 prixUnitaireJour
+                 prixTotal
+                 montantAvance
+                -->
+
+              <form class="needs-validation" [formGroup]="submitForm" (ngSubmit)="onSubmit()">
+                  <div class="form-row">
+                      <div class="col-md-6 mb-3">
+                        <label class="form-control-label"  for="exampleDatepicker">Date Contrat</label>
+                          <input class="form-control datepicker" formControlName="dateContrat" [ngModel]="contrat['dateContrat'] | date:'yyyy-MM-dd'"  type="date" >
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label class="form-control-label"  for="exampleDatepicker">Date Debut Locaction</label>
+                        <input class="form-control datepicker" formControlName="dateDebutLocation" [ngModel]="contrat['dateDebutLocation'] | date:'yyyy-MM-dd'"  type="date" value="06/20/2018">
+                      </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                      <label class="form-control-label"  for="exampleDatepicker">Date Fin Location</label>
+                      <input class="form-control datepicker" formControlName="dateFinLocation" [ngModel]="contrat['dateFinLocation'] | date:'yyyy-MM-dd'" type="date" value="06/20/2018">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <div class="input-group-append">
+                      <input class="form-control" formControlName="prixUnitaireJour" placeholder="Prix Jours" [ngModel]="contrat['prixUnitaireJour']" type="text">
+                            <span class="input-group-text"><small class="font-weight-bold">USD</small></span>
+                          </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                      <div class="input-group-append">
+                      <input class="form-control" formControlName="prixTotal" [ngModel]="contrat['prixTotal']" placeholder="Prix Total" type="text">
+                            <span class="input-group-text"><small class="font-weight-bold">USD</small></span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <div class="input-group-append">
+                      <input class="form-control" formControlName="montantAvance" [ngModel]="contrat['montantAvance']" placeholder="Montant Avance" type="text">
+                            <span class="input-group-text"><small class="font-weight-bold">USD</small></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                      <label class="form-control-label"  >Choix Conducteur</label>
+                      <select class="form-control" formControlName="conducteurs" name="conducteurs" data-toggle="select">
+                       <option *ngFor="let conducteur of conducteurs"
+                       [ngValue]="conducteur">{{conducteur.prenomNomConducteur}}</option>-->
+
+                      </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label class="form-control-label"  >Choix Societe</label>
+                      <select class="form-control" formControlName="societe" name="societe" data-toggle="select">
+                        <option  *ngFor="let societe of societes"
+                        [ngValue]="societe">{{societe.nomSociete}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label class="form-control-label"  >Choix Voiture</label>
+                    <select class="form-control"
+                            formControlName="voitures" name="voitures" data-toggle="select">
+                      <option *ngFor="let voiture of voitures"
+                       [ngValue]="voiture">{{voiture.matricule}}</option>
+
+                    </select>
+                  </div>
+                </div>
+
+                  <button class="btn btn-primary" type="submit">Modifier Contrat</button>
+                </form>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>

@@ -1,0 +1,107 @@
+
+<div class="header bg-primary pb-6">
+
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-white d-inline-block mb-0">Contrat Management</h6>
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item"><a href="contrat"><i class="fas fa-home"></i></a></li>
+              <li class="breadcrumb-item"><a href="contrat">Contrat</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Index</li>
+            </ol>
+          </nav>
+        </div>
+        <div class="col-lg-6 col-5 text-right">
+          <a href="contrat/ajouter" class="btn btn-sm btn-neutral">Add New Contrat</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <!-- Card header -->
+        <div class="card-header">
+          <h3 class="mb-0">Liste Contrat</h3>
+
+        </div>
+        <div class="table-responsive py-4">
+          <table class="table table-flush" id="datatable-basic">
+            <thead class="thead-light">
+              <tr>
+                <th class="text-center">#</th>
+                <th>dateContrat</th>
+                <th>dateDebutLocation</th>
+                <th>dateFinLocation</th>
+                <th>prixUnitaireJour</th>
+                <th>prixTotal</th>
+                <th>montantAvance</th>
+
+                <th>codeConducteur</th>
+                <th>conducteur</th>
+                <th>numSociete</th>
+                <th>idVoiture</th>
+                <th>voiture</th>
+                <th class="td-actions text-right">Actions</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th class="text-center">#</th>
+                <th>dateContrat</th>
+                <th>dateDebutLocation</th>
+                <th>dateFinLocation</th>
+                <th>prixUnitaireJour</th>
+                <th>prixTotal</th>
+                <th>montantAvance</th>
+
+                <th>conducteur</th>
+                <th>numSociete</th>
+                <th>voiture</th>
+                <th class="td-actions text-right">Actions</th>
+              </tr>
+            </tfoot>
+            <tbody>
+
+              <tr  *ngFor="let contrat of contrats; let i = index" [attr.data-index]="i">
+                <td class="text-center">{{ contrat.numContrat}}</td>
+                <td>{{ contrat.dateContrat | date: 'dd-MM-yyyy'}}</td>
+                <td>{{ contrat.dateDebutLocation | date: 'dd-MM-yyyy'}}</td>
+                <td>{{ contrat.dateFinLocation | date: 'dd-MM-yyyy'}}</td>
+                <td>{{ contrat.prixUnitaireJour}}</td>
+                <td>{{ contrat.prixTotal}}</td>
+                <td>{{ contrat.montantAvance}}</td>
+
+                <td>{{ contrat.conducteurs['prenomNomConducteur']}}</td>
+                <td>{{ contrat.societe['nomSociete']}}</td>
+                <td>{{ contrat.voitures['numcartegrise']}}</td>
+
+                 <td class="td-actions text-right">
+
+                  <a routerLink="modifier/{{contrat.numContrat}}" class="table-action" data-toggle="tooltip" data-original-title="Edit Conducteur">
+                    <i class="fas fa-user-edit"></i>
+                  </a>
+
+                 <a (click)="openConfirmationDialog(contrat.numContrat)" class="table-action table-action-delete"  data-toggle="tooltip" data-original-title="Delete Conducteur">
+
+               <i class="fas fa-trash"></i>
+             </a>
+            </td>
+
+
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
